@@ -153,64 +153,11 @@ class _HomePageState extends State<HomePage> {
             // ======================================
 
             Container(
-              width: double.infinity,
-              height: 350,
+                width: double.infinity,
+                height: 350,
 
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-
-                  colors: [
-                    Color(0xFFFFD54F),
-                    Color(0xFFFF7043),
-                    Color(0xFFE91E63),
-                    Color(0xFF673AB7),
-                  ],
+                child: Image.asset('assets/images/post.jpg', width: double.infinity,),
                 ),
-              ),
-
-              child: const Center(
-                child: Column(
-                  mainAxisAlignment:
-                      MainAxisAlignment.center,
-
-                  children: [
-
-                    Icon(
-                      Icons.flutter_dash,
-
-                      size: 100,
-
-                      color: Colors.white,
-                    ),
-
-                    SizedBox(height: 15),
-
-                    Text(
-                      'Flutter',
-
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-
-                    SizedBox(height: 5),
-
-                    Text(
-                      'Build beautiful apps',
-
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
 
             // ======================================
             // POST ACTIONS
