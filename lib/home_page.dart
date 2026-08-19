@@ -9,20 +9,27 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  // Like state
-  int likes = 0;
   bool isLiked = false;
+  bool isLiked2 = false;
+  bool isLiked3 = false;
 
-  // Like button function
-  void toggleLike() {
+  int likes = 0;
+
+  void toggleLike1() {
     setState(() {
-      if (isLiked) {
-        likes--;
-        isLiked = false;
-      } else {
-        likes++;
-        isLiked = true;
-      }
+      isLiked = !isLiked;
+    });
+  }
+
+  void toggleLike2() {
+    setState(() {
+      isLiked2 = !isLiked2;
+    });
+  }
+
+  void toggleLike3() {
+    setState(() {
+      isLiked3 = !isLiked3;
     });
   }
 
@@ -115,7 +122,7 @@ class _HomePageState extends State<HomePage> {
                       children: [
 
                         Text(
-                          'flutter_student',
+                          'aachal the great',
 
                           style: TextStyle(
                             fontSize: 16,
@@ -126,7 +133,7 @@ class _HomePageState extends State<HomePage> {
                         SizedBox(height: 3),
 
                         Text(
-                          'Learning Flutter',
+                          'teaching people how to live',
 
                           style: TextStyle(
                             fontSize: 13,
@@ -148,210 +155,317 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            // ======================================
-            // POST
-            // ======================================
+// ======================================
+// POST 1
+// ======================================
 
-            Container(
-              width: double.infinity,
-              height: 350,
+Center(
+  child: SizedBox(
+    width: 500,
+    height: 625,
+    child: Image.asset(
+      'assets/my_photo.jpeg',
+      fit: BoxFit.contain,
+    ),
+  ),
+),
 
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
+// ======================================
+// POST 1 ACTIONS
+// ======================================
 
-                  colors: [
-                    Color(0xFFFFD54F),
-                    Color(0xFFFF7043),
-                    Color(0xFFE91E63),
-                    Color(0xFF673AB7),
-                  ],
-                ),
-              ),
+Padding(
+  padding: const EdgeInsets.symmetric(
+    horizontal: 12,
+    vertical: 8,
+  ),
+  child: Row(
+    children: [
+      // LIKE POST 1
+      IconButton(
+        onPressed: toggleLike1,
+        icon: Icon(
+          isLiked
+              ? Icons.favorite
+              : Icons.favorite_border,
+          size: 30,
+          color: isLiked
+              ? Colors.red
+              : Colors.black,
+        ),
+      ),
 
-              child: const Center(
-                child: Column(
-                  mainAxisAlignment:
-                      MainAxisAlignment.center,
+      // COMMENT
+      IconButton(
+        onPressed: () {},
+        icon: const Icon(
+          Icons.chat_bubble_outline,
+          size: 28,
+        ),
+      ),
 
-                  children: [
+      // SHARE
+      IconButton(
+        onPressed: () {},
+        icon: const Icon(
+          Icons.send_outlined,
+          size: 28,
+        ),
+      ),
 
-                    Icon(
-                      Icons.flutter_dash,
+      const Spacer(),
 
-                      size: 100,
+      // SAVE
+      IconButton(
+        onPressed: () {},
+        icon: const Icon(
+          Icons.bookmark_border,
+          size: 28,
+        ),
+      ),
+    ],
+  ),
+),
 
-                      color: Colors.white,
-                    ),
+const Padding(
+  padding: EdgeInsets.symmetric(horizontal: 16),
+  child: Text(
+    'follow for more content like this 🚀',
+    style: TextStyle(fontSize: 16),
+  ),
+),
 
-                    SizedBox(height: 15),
+const SizedBox(height: 20),
 
-                    Text(
-                      'Flutter',
+// ======================================
+// POST 2
+// ======================================
 
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+Center(
+  child: SizedBox(
+    width: 500,
+    height: 625,
+    child: Image.asset(
+      'assets/2.jpeg',
+      fit: BoxFit.contain,
+    ),
+  ),
+),
 
-                    SizedBox(height: 5),
+// ======================================
+// POST 2 ACTIONS
+// ======================================
 
-                    Text(
-                      'Build beautiful apps',
+Padding(
+  padding: const EdgeInsets.symmetric(
+    horizontal: 12,
+    vertical: 8,
+  ),
+  child: Row(
+    children: [
+      // LIKE POST 2
+      IconButton(
+        onPressed: toggleLike2,
+        icon: Icon(
+          isLiked2
+              ? Icons.favorite
+              : Icons.favorite_border,
+          size: 30,
+          color: isLiked2
+              ? Colors.red
+              : Colors.black,
+        ),
+      ),
 
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+      // COMMENT
+      IconButton(
+        onPressed: () {},
+        icon: const Icon(
+          Icons.chat_bubble_outline,
+          size: 28,
+        ),
+      ),
 
-            // ======================================
-            // POST ACTIONS
-            // ======================================
+      // SHARE
+      IconButton(
+        onPressed: () {},
+        icon: const Icon(
+          Icons.send_outlined,
+          size: 28,
+        ),
+      ),
 
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 12,
-                vertical: 8,
-              ),
+      const Spacer(),
 
-              child: Row(
-                children: [
+      // SAVE
+      IconButton(
+        onPressed: () {},
+        icon: const Icon(
+          Icons.bookmark_border,
+          size: 28,
+        ),
+      ),
+    ],
+  ),
+),
 
-                  // LIKE
-                  IconButton(
-                    onPressed: toggleLike,
+const Padding(
+  padding: EdgeInsets.symmetric(horizontal: 16),
+  child: Text(
+    'My photo is definitely not AI generated ❤️',
+    style: TextStyle(fontSize: 16),
+  ),
+),
 
-                    icon: Icon(
+const SizedBox(height: 20),
 
-                      isLiked
-                          ? Icons.favorite
-                          : Icons.favorite_border,
+// ======================================
+// POST 3
+// ======================================
 
-                      size: 30,
+Center(
+  child: SizedBox(
+    width: 500,
+    height: 625,
+    child: Image.asset(
+      'assets/3.jpeg',
+      fit: BoxFit.contain,
+    ),
+  ),
+),
 
-                      color: isLiked
-                          ? Colors.red
-                          : Colors.black,
-                    ),
-                  ),
+// ======================================
+// POST 3 ACTIONS
+// ======================================
 
-                  // COMMENT
-                  IconButton(
-                    onPressed: () {},
+Padding(
+  padding: const EdgeInsets.symmetric(
+    horizontal: 12,
+    vertical: 8,
+  ),
+  child: Row(
+    children: [
+      // LIKE POST 3
+      IconButton(
+        onPressed: toggleLike3,
+        icon: Icon(
+          isLiked3
+              ? Icons.favorite
+              : Icons.favorite_border,
+          size: 30,
+          color: isLiked3
+              ? Colors.red
+              : Colors.black,
+        ),
+      ),
 
-                    icon: const Icon(
-                      Icons.chat_bubble_outline,
-                      size: 28,
-                    ),
-                  ),
+      // COMMENT
+      IconButton(
+        onPressed: () {},
+        icon: const Icon(
+          Icons.chat_bubble_outline,
+          size: 28,
+        ),
+      ),
 
-                  // SHARE
-                  IconButton(
-                    onPressed: () {},
+      // SHARE
+      IconButton(
+        onPressed: () {},
+        icon: const Icon(
+          Icons.send_outlined,
+          size: 28,
+        ),
+      ),
 
-                    icon: const Icon(
-                      Icons.send_outlined,
-                      size: 28,
-                    ),
-                  ),
+      const Spacer(),
 
-                  const Spacer(),
+      // SAVE
+      IconButton(
+        onPressed: () {},
+        icon: const Icon(
+          Icons.bookmark_border,
+          size: 28,
+        ),
+      ),
+    ],
+  ),
+),
 
-                  // SAVE
-                  IconButton(
-                    onPressed: () {},
+const Padding(
+  padding: EdgeInsets.symmetric(horizontal: 16),
+  child: Text(
+    'Just enjoying a little snack break 🥪❤️',
+    style: TextStyle(fontSize: 16),
+  ),
+),
 
-                    icon: const Icon(
-                      Icons.bookmark_border,
-                      size: 28,
-                    ),
-                  ),
-                ],
-              ),
-            ),
+const SizedBox(height: 20),
 
-            // ======================================
-            // LIKE COUNT
-            // ======================================
+// ======================================
+// LIKE COUNT
+// ======================================
 
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16,
-              ),
+Padding(
+  padding: const EdgeInsets.symmetric(
+    horizontal: 16,
+  ),
+  child: Text(
+    '$likes likes',
+    style: const TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.bold,
+    ),
+  ),
+),
 
-              child: Text(
-                '$likes likes',
+const SizedBox(height: 8),
 
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
+// ======================================
+// CAPTION
+// ======================================
 
-            const SizedBox(height: 8),
+const Padding(
+  padding: EdgeInsets.symmetric(
+    horizontal: 16,
+  ),
+  child: Text(
+    'flutter_student '
+    'Learning Flutter one widget at a time! 🚀',
+    style: TextStyle(
+      fontSize: 15,
+    ),
+  ),
+),
 
-            // ======================================
-            // CAPTION
-            // ======================================
+const SizedBox(height: 20),
 
-            const Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 16,
-              ),
+// ======================================
+// LIKE BUTTON
+// ======================================
 
-              child: Text(
-                'flutter_student '
-                'Learning Flutter one widget at a time! 🚀',
+Padding(
+  padding: const EdgeInsets.symmetric(
+    horizontal: 16,
+  ),
+  child: SizedBox(
+    width: double.infinity,
+    child: ElevatedButton.icon(
+      onPressed: toggleLike1,
+      icon: Icon(
+        isLiked
+            ? Icons.favorite
+            : Icons.favorite_border,
+      ),
+      label: Text(
+        isLiked
+            ? 'Liked'
+            : 'Like this post',
+      ),
+    ),
+  ),
+),
 
-                style: TextStyle(
-                  fontSize: 15,
-                ),
-              ),
-            ),
-
-            const SizedBox(height: 20),
-
-            // ======================================
-            // LIKE BUTTON
-            // ======================================
-
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16,
-              ),
-
-              child: SizedBox(
-                width: double.infinity,
-
-                child: ElevatedButton.icon(
-
-                  onPressed: toggleLike,
-
-                  icon: Icon(
-                    isLiked
-                        ? Icons.favorite
-                        : Icons.favorite_border,
-                  ),
-
-                  label: Text(
-                    isLiked
-                        ? 'Liked'
-                        : 'Like this post',
-                  ),
-                ),
-              ),
-            ),
-
-            const SizedBox(height: 30),
+const SizedBox(height: 30),
           ],
         ),
       ),
