@@ -1,5 +1,14 @@
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: HomePage(),
+    ),
+  );
+}
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -8,96 +17,166 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  // =====================================================
+  // LIKES
+  // =====================================================
 
-  // Like state
-  int likes = 0;
-  bool isLiked = false;
+  int likes1 = 124;
+  bool isLiked1 = false;
 
-  // Like button function
-  void toggleLike() {
+  int likes2 = 87;
+  bool isLiked2 = false;
+
+  int likes3 = 156;
+  bool isLiked3 = false;
+
+  // =====================================================
+  // LIKE FUNCTIONS
+  // =====================================================
+
+  void toggleLike1() {
     setState(() {
-      if (isLiked) {
-        likes--;
-        isLiked = false;
+      if (isLiked1) {
+        likes1--;
+        isLiked1 = false;
       } else {
-        likes++;
-        isLiked = true;
+        likes1++;
+        isLiked1 = true;
       }
     });
   }
+
+  void toggleLike2() {
+    setState(() {
+      if (isLiked2) {
+        likes2--;
+        isLiked2 = false;
+      } else {
+        likes2++;
+        isLiked2 = true;
+      }
+    });
+  }
+
+  void toggleLike3() {
+    setState(() {
+      if (isLiked3) {
+        likes3--;
+        isLiked3 = false;
+      } else {
+        likes3++;
+        isLiked3 = true;
+      }
+    });
+  }
+
+  // =====================================================
+  // Keep the complete image visible in a slightly wider tile.
+  // =====================================================
+
+  Widget squareImage(String imagePath) {
+  return Container(
+    width: double.infinity,
+    color: const Color(0xFFF2F2F2), // Grey background across full width
+    padding: const EdgeInsets.symmetric(vertical: 20),
+    child: Center(
+      child: SizedBox(
+        width: 400,
+        child: AspectRatio(
+          aspectRatio: 1.15,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: Image.asset(
+              imagePath,
+              fit: BoxFit.contain,
+              errorBuilder: (context, error, stackTrace) {
+                return const ColoredBox(
+                  color: Color(0xFFF2F2F2),
+                  child: Center(
+                    child: Icon(
+                      Icons.image,
+                      size: 70,
+                      color: Colors.grey,
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
+}
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
 
-      // ==========================================
+      // =================================================
       // APP BAR
-      // ==========================================
+      // =================================================
 
       appBar: AppBar(
         backgroundColor: Colors.white,
+        elevation: 0,
 
         title: const Text(
           'Instagram',
           style: TextStyle(
             fontSize: 26,
             fontWeight: FontWeight.bold,
+            color: Colors.black,
           ),
         ),
 
         actions: [
-
           IconButton(
             onPressed: () {},
-
             icon: const Icon(
               Icons.favorite_border,
+              color: Colors.black,
             ),
           ),
 
           IconButton(
             onPressed: () {},
-
             icon: const Icon(
               Icons.send_outlined,
+              color: Colors.black,
             ),
           ),
         ],
       ),
 
-      // ==========================================
+      // =================================================
       // BODY
-      // ==========================================
+      // =================================================
 
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-
           children: [
 
-            // ======================================
-            // PROFILE SECTION
-            // ======================================
+            // =================================================
+            // POST 1
+            // =================================================
 
             Padding(
               padding: const EdgeInsets.all(16),
-
               child: Row(
                 children: [
 
-                  // Profile Icon
                   Container(
                     width: 50,
                     height: 50,
-
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-
                       border: Border.all(
                         width: 2,
+                        color: Colors.black,
                       ),
                     ),
-
                     child: const Icon(
                       Icons.person,
                       size: 30,
@@ -106,17 +185,14 @@ class _HomePageState extends State<HomePage> {
 
                   const SizedBox(width: 12),
 
-                  // Username
                   const Expanded(
                     child: Column(
                       crossAxisAlignment:
                           CrossAxisAlignment.start,
-
                       children: [
 
                         Text(
-                          'flutter_student',
-
+                          'sakksayy',
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -126,8 +202,7 @@ class _HomePageState extends State<HomePage> {
                         SizedBox(height: 3),
 
                         Text(
-                          'Learning Flutter',
-
+                          'Dreaming',
                           style: TextStyle(
                             fontSize: 13,
                           ),
@@ -136,127 +211,57 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
 
-                  // Follow Button
                   ElevatedButton(
                     onPressed: () {},
-
-                    child: const Text(
-                      'Follow',
-                    ),
+                    child: const Text('Follow'),
                   ),
                 ],
               ),
             ),
 
-            // ======================================
-            // POST
-            // ======================================
+            // =================================================
+            // POST 1 - 4 x 4 SQUARE
+            // =================================================
 
-            Container(
-              width: double.infinity,
-              height: 350,
-
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-
-                  colors: [
-                    Color(0xFFFFD54F),
-                    Color(0xFFFF7043),
-                    Color(0xFFE91E63),
-                    Color(0xFF673AB7),
-                  ],
-                ),
-              ),
-
-              child: const Center(
-                child: Column(
-                  mainAxisAlignment:
-                      MainAxisAlignment.center,
-
-                  children: [
-
-                    Icon(
-                      Icons.flutter_dash,
-
-                      size: 100,
-
-                      color: Colors.white,
-                    ),
-
-                    SizedBox(height: 15),
-
-                    Text(
-                      'Flutter',
-
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-
-                    SizedBox(height: 5),
-
-                    Text(
-                      'Build beautiful apps',
-
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+            squareImage(
+              'assets/images/post1.png',
             ),
 
-            // ======================================
-            // POST ACTIONS
-            // ======================================
+            // =================================================
+            // POST 1 ACTIONS
+            // =================================================
 
             Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 12,
                 vertical: 8,
               ),
-
               child: Row(
                 children: [
 
-                  // LIKE
                   IconButton(
-                    onPressed: toggleLike,
-
+                    onPressed: toggleLike1,
                     icon: Icon(
-
-                      isLiked
+                      isLiked1
                           ? Icons.favorite
                           : Icons.favorite_border,
-
                       size: 30,
-
-                      color: isLiked
+                      color: isLiked1
                           ? Colors.red
                           : Colors.black,
                     ),
                   ),
 
-                  // COMMENT
                   IconButton(
                     onPressed: () {},
-
                     icon: const Icon(
                       Icons.chat_bubble_outline,
                       size: 28,
                     ),
                   ),
 
-                  // SHARE
                   IconButton(
                     onPressed: () {},
-
                     icon: const Icon(
                       Icons.send_outlined,
                       size: 28,
@@ -265,10 +270,8 @@ class _HomePageState extends State<HomePage> {
 
                   const Spacer(),
 
-                  // SAVE
                   IconButton(
                     onPressed: () {},
-
                     icon: const Icon(
                       Icons.bookmark_border,
                       size: 28,
@@ -278,18 +281,12 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            // ======================================
-            // LIKE COUNT
-            // ======================================
-
             Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 16,
               ),
-
               child: Text(
-                '$likes likes',
-
+                '$likes1 likes',
                 style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
@@ -299,19 +296,12 @@ class _HomePageState extends State<HomePage> {
 
             const SizedBox(height: 8),
 
-            // ======================================
-            // CAPTION
-            // ======================================
-
             const Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: 16,
               ),
-
               child: Text(
-                'flutter_student '
-                'Learning Flutter one widget at a time! 🚀',
-
+                'sakksayy Cool Uncle 😎🤘',
                 style: TextStyle(
                   fontSize: 15,
                 ),
@@ -320,34 +310,431 @@ class _HomePageState extends State<HomePage> {
 
             const SizedBox(height: 20),
 
-            // ======================================
-            // LIKE BUTTON
-            // ======================================
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+              ),
+              child: SizedBox(
+                width: double.infinity,
+                child: ElevatedButton.icon(
+                  onPressed: toggleLike1,
+                  icon: Icon(
+                    isLiked1
+                        ? Icons.favorite
+                        : Icons.favorite_border,
+                  ),
+                  label: Text(
+                    isLiked1
+                        ? 'Liked'
+                        : 'Like this post',
+                  ),
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 30),
+
+            // =================================================
+            // POST 2
+            // =================================================
+
+            const Divider(
+              thickness: 8,
+              color: Color(0xFFF5F5F5),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Row(
+                children: [
+
+                  Container(
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        width: 2,
+                        color: Colors.black,
+                      ),
+                    ),
+                    child: const Icon(
+                      Icons.person,
+                      size: 30,
+                    ),
+                  ),
+
+                  const SizedBox(width: 12),
+
+                  const Expanded(
+                    child: Column(
+                      crossAxisAlignment:
+                          CrossAxisAlignment.start,
+                      children: [
+
+                        Text(
+                          'sakksayy',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+
+                        SizedBox(height: 3),
+
+                        Text(
+                          'bas yu hi',
+                          style: TextStyle(
+                            fontSize: 13,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: const Text('Follow'),
+                  ),
+                ],
+              ),
+            ),
+
+            // =================================================
+            // POST 2 - 4 x 4 SQUARE
+            // =================================================
+
+            squareImage(
+              'assets/images/post2.png',
+            ),
+
+            // =================================================
+            // POST 2 ACTIONS
+            // =================================================
+
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 12,
+                vertical: 8,
+              ),
+              child: Row(
+                children: [
+
+                  IconButton(
+                    onPressed: toggleLike2,
+                    icon: Icon(
+                      isLiked2
+                          ? Icons.favorite
+                          : Icons.favorite_border,
+                      size: 30,
+                      color: isLiked2
+                          ? Colors.red
+                          : Colors.black,
+                    ),
+                  ),
+
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.chat_bubble_outline,
+                      size: 28,
+                    ),
+                  ),
+
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.send_outlined,
+                      size: 28,
+                    ),
+                  ),
+
+                  const Spacer(),
+
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.bookmark_border,
+                      size: 28,
+                    ),
+                  ),
+                ],
+              ),
+            ),
 
             Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 16,
               ),
+              child: Text(
+                '$likes2 likes',
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
 
+            const SizedBox(height: 8),
+
+            const Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 16,
+              ),
+              child: Text(
+                'sakksayy Phool Wali Ladki 🌸',
+                style: TextStyle(
+                  fontSize: 15,
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 20),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+              ),
               child: SizedBox(
                 width: double.infinity,
-
                 child: ElevatedButton.icon(
-
-                  onPressed: toggleLike,
-
+                  onPressed: toggleLike2,
                   icon: Icon(
-                    isLiked
+                    isLiked2
                         ? Icons.favorite
                         : Icons.favorite_border,
                   ),
-
                   label: Text(
-                    isLiked
+                    isLiked2
                         ? 'Liked'
                         : 'Like this post',
                   ),
                 ),
+              ),
+            ),
+
+            const SizedBox(height: 30),
+
+            // =================================================
+            // POST 3
+            // =================================================
+
+            const Divider(
+              thickness: 8,
+              color: Color(0xFFF5F5F5),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Row(
+                children: [
+
+                  Container(
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        width: 2,
+                        color: Colors.black,
+                      ),
+                    ),
+                    child: const Icon(
+                      Icons.person,
+                      size: 30,
+                    ),
+                  ),
+
+                  const SizedBox(width: 12),
+
+                  const Expanded(
+                    child: Column(
+                      crossAxisAlignment:
+                          CrossAxisAlignment.start,
+                      children: [
+
+                        Text(
+                          'sakksayy',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+
+                        SizedBox(height: 3),
+
+                        Text(
+                          'aaram',
+                          style: TextStyle(
+                            fontSize: 13,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: const Text('Follow'),
+                  ),
+                ],
+              ),
+            ),
+
+            // =================================================
+            // POST 3 - 4 x 4 SQUARE
+            // =================================================
+
+            squareImage(
+              'assets/images/post3.png',
+            ),
+
+            // =================================================
+            // POST 3 ACTIONS
+            // =================================================
+
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 12,
+                vertical: 8,
+              ),
+              child: Row(
+                children: [
+
+                  IconButton(
+                    onPressed: toggleLike3,
+                    icon: Icon(
+                      isLiked3
+                          ? Icons.favorite
+                          : Icons.favorite_border,
+                      size: 30,
+                      color: isLiked3
+                          ? Colors.red
+                          : Colors.black,
+                    ),
+                  ),
+
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.chat_bubble_outline,
+                      size: 28,
+                    ),
+                  ),
+
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.send_outlined,
+                      size: 28,
+                    ),
+                  ),
+
+                  const Spacer(),
+
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.bookmark_border,
+                      size: 28,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+              ),
+              child: Text(
+                '$likes3 likes',
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 8),
+
+            const Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 16,
+              ),
+              child: Text(
+               'sakksayy Ek Cup Chai ☕',
+                style: TextStyle(
+                  fontSize: 15,
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 20),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+              ),
+              child: SizedBox(
+                width: double.infinity,
+                child: ElevatedButton.icon(
+                  onPressed: toggleLike3,
+                  icon: Icon(
+                    isLiked3
+                        ? Icons.favorite
+                        : Icons.favorite_border,
+                  ),
+                  label: Text(
+                    isLiked3
+                        ? 'Liked'
+                        : 'Like this post',
+                  ),
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 40),
+
+            // =================================================
+            // STUDENT INFORMATION
+            // =================================================
+
+            Container(
+              width: double.infinity,
+              margin: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: Colors.grey.shade100,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: const Column(
+                crossAxisAlignment:
+                    CrossAxisAlignment.start,
+                children: [
+
+                  Text(
+                    'Student Information',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+
+                  SizedBox(height: 10),
+
+                  Text(
+                    'Name: Sakshi Pokhriyal',
+                  ),
+
+                  Text(
+                    'Roll No.: Your Roll Number',
+                  ),
+
+                  Text(
+                    'Batch: Your Batch',
+                  ),
+                ],
               ),
             ),
 
