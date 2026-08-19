@@ -20,7 +20,13 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
       ),
 
-      home: const HomePage(),
+      home: const Center(
+        child: SizedBox(
+          width: 430,
+          height: 932,
+          child: HomePage(),
+        ),
+      ),
     );
   }
 }
