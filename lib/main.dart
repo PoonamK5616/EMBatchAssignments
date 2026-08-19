@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
 
-      title: 'My First Flutter App',
+      title: 'Instagram',
 
       theme: ThemeData(
         useMaterial3: true,
