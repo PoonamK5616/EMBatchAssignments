@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'home_page.dart';
+import 'contact_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +13,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-
       title: 'My First Flutter App',
 
       theme: ThemeData(
@@ -21,7 +20,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
       ),
 
-      home: const HomePage(),
+      home: const ContactPage(),
     );
   }
 }
