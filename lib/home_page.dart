@@ -1,357 +1,271 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
+  // Anime Data 
+  final List<Map<String, String>> posts = const [
+    {
+      'username': 'anime_expo',
+      'subtitle': 'Zoro',
+      'imageUrl': 'https://i.pinimg.com/736x/ac/82/0f/ac820f0407096c090161e2a1e13d817e.jpg',
+      'caption': 'Need a google Maps ✨',
+    },
+    {
+      'username': 'Straw_hat',
+      'subtitle': 'Pirate',
+      'imageUrl': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtRNilyhJJl6TC7XVoMqEs1Qeve76TomEd2h5pMsQuWlsEX-qhlOE2eQM&s',
+      'caption': 'King of the pirates ',
+    },
+    {
+      'username': 'Naruto',
+      'subtitle': 'ninja',
+      'imageUrl': 'https://i.pinimg.com/236x/94/36/1e/94361e0ddf929122c5438a36235d44b5.jpg',
+      'caption': 'Need more power',
+    },
+  ];
+
   @override
-  State<HomePage> createState() => _HomePageState();
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: const Text(
+          'Instagram',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 24,
+            color: Colors.black,
+          ),
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.favorite_border, color: Colors.black),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: const Icon(Icons.send_outlined, color: Colors.black),
+            onPressed: () {},
+          ),
+          const SizedBox(width: 16), // A little padding for desktop
+        ],
+        elevation: 0,
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(1.0),
+          child: Container(color: Colors.grey.shade300, height: 1.0),
+        ),
+      ),
+      body: ListView.builder(
+        itemCount: posts.length,
+        itemBuilder: (context, index) {
+          return NaturePost(
+            username: posts[index]['username']!,
+            subtitle: posts[index]['subtitle']!,
+            imageUrl: posts[index]['imageUrl']!,
+            caption: posts[index]['caption']!,
+          );
+        },
+      ),
+    );
+  }
 }
 
-class _HomePageState extends State<HomePage> {
+class NaturePost extends StatefulWidget {
+  final String username;
+  final String subtitle;
+  final String imageUrl;
+  final String caption;
 
-  // Like state
-  int likes = 0;
+  const NaturePost({
+    super.key,
+    required this.username,
+    required this.subtitle,
+    required this.imageUrl,
+    required this.caption,
+  });
+
+  @override
+  State<NaturePost> createState() => _NaturePostState();
+}
+
+class _NaturePostState extends State<NaturePost> {
+  int likesCount = 0;
   bool isLiked = false;
 
-  // Like button function
-  void toggleLike() {
+  void _incrementLikes() {
     setState(() {
-      if (isLiked) {
-        likes--;
-        isLiked = false;
-      } else {
-        likes++;
-        isLiked = true;
-      }
+      likesCount++;
+      isLiked = true; 
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-
-      // ==========================================
-      // APP BAR
-      // ==========================================
-
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-
-        title: const Text(
-          'Instagram',
-          style: TextStyle(
-            fontSize: 26,
-            fontWeight: FontWeight.bold,
-          ),
+    // This Center and ConstrainedBox are the key to the desktop layout
+    return Center(
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(
+          maxWidth: 470, // Matches Instagram's desktop feed width
         ),
-
-        actions: [
-
-          IconButton(
-            onPressed: () {},
-
-            icon: const Icon(
-              Icons.favorite_border,
-            ),
-          ),
-
-          IconButton(
-            onPressed: () {},
-
-            icon: const Icon(
-              Icons.send_outlined,
-            ),
-          ),
-        ],
-      ),
-
-      // ==========================================
-      // BODY
-      // ==========================================
-
-      body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-
           children: [
-
-            // ======================================
-            // PROFILE SECTION
-            // ======================================
-
+            const SizedBox(height: 20),
+            
+            // Post Header
             Padding(
-              padding: const EdgeInsets.all(16),
-
+              padding: const EdgeInsets.symmetric(horizontal: 0.0, vertical: 8.0),
               child: Row(
                 children: [
-
-                  // Profile Icon
-                  Container(
-                    width: 50,
-                    height: 50,
-
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-
-                      border: Border.all(
-                        width: 2,
-                      ),
-                    ),
-
-                    child: const Icon(
-                      Icons.person,
-                      size: 30,
-                    ),
+                  const CircleAvatar(
+                    backgroundColor: Colors.green,
+                    child: Icon(Icons.person, color: Colors.white),
                   ),
-
-                  const SizedBox(width: 12),
-
-                  // Username
-                  const Expanded(
+                  const SizedBox(width: 30),
+                  Expanded(
                     child: Column(
-                      crossAxisAlignment:
-                          CrossAxisAlignment.start,
-
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-
                         Text(
-                          'flutter_student',
-
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          widget.username,
+                          style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
-
-                        SizedBox(height: 3),
-
                         Text(
-                          'Learning Flutter',
-
-                          style: TextStyle(
-                            fontSize: 13,
-                          ),
+                          widget.subtitle,
+                          style: const TextStyle(color: Colors.grey, fontSize: 12),
                         ),
                       ],
                     ),
                   ),
-
-                  // Follow Button
-                  ElevatedButton(
+                  TextButton(
                     onPressed: () {},
-
-                    child: const Text(
-                      'Follow',
+                    style: TextButton.styleFrom(
+                      backgroundColor: Colors.grey.shade200,
+                      foregroundColor: Colors.black,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
                     ),
+                    child: const Text('Follow', style: TextStyle(fontWeight: FontWeight.bold)),
                   ),
                 ],
               ),
             ),
 
-            // ======================================
-            // POST
-            // ======================================
-
-            Container(
-              width: double.infinity,
-              height: 350,
-
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-
-                  colors: [
-                    Color(0xFFFFD54F),
-                    Color(0xFFFF7043),
-                    Color(0xFFE91E63),
-                    Color(0xFF673AB7),
-                  ],
-                ),
-              ),
-
-              child: const Center(
-                child: Column(
-                  mainAxisAlignment:
-                      MainAxisAlignment.center,
-
-                  children: [
-
-                    Icon(
-                      Icons.flutter_dash,
-
-                      size: 100,
-
-                      color: Colors.white,
-                    ),
-
-                    SizedBox(height: 15),
-
-                    Text(
-                      'Flutter',
-
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-
-                    SizedBox(height: 5),
-
-                    Text(
-                      'Build beautiful apps',
-
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                      ),
-                    ),
-                  ],
+            // Post Image (Responsive Square)
+            // AspectRatio forces it to be a perfect square inside the 470px box
+            ClipRRect(
+              borderRadius: BorderRadius.circular(4.0),
+              child: AspectRatio(
+                aspectRatio: 0.7,
+                child: Image.network(
+                  widget.imageUrl,
+                  fit: BoxFit.cover,
+                  loadingBuilder: (context, child, loadingProgress) {
+                    if (loadingProgress == null) return child;
+                    return const Center(child: CircularProgressIndicator());
+                  },
+                  errorBuilder: (context, error, stackTrace) => 
+                      const Center(child: Icon(Icons.error)),
                 ),
               ),
             ),
 
-            // ======================================
-            // POST ACTIONS
-            // ======================================
-
+            // Action Icons
             Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 12,
-                vertical: 8,
-              ),
-
+              padding: const EdgeInsets.symmetric(vertical: 4.0),
               child: Row(
                 children: [
-
-                  // LIKE
                   IconButton(
-                    onPressed: toggleLike,
-
+                    padding: EdgeInsets.zero,
+                    constraints: const BoxConstraints(),
                     icon: Icon(
-
-                      isLiked
-                          ? Icons.favorite
-                          : Icons.favorite_border,
-
-                      size: 30,
-
-                      color: isLiked
-                          ? Colors.red
-                          : Colors.black,
-                    ),
-                  ),
-
-                  // COMMENT
-                  IconButton(
-                    onPressed: () {},
-
-                    icon: const Icon(
-                      Icons.chat_bubble_outline,
+                      isLiked ? Icons.favorite : Icons.favorite_border,
+                      color: isLiked ? Colors.red : Colors.black,
                       size: 28,
                     ),
+                    onPressed: _incrementLikes,
                   ),
-
-                  // SHARE
+                  const SizedBox(width: 16),
                   IconButton(
+                    padding: EdgeInsets.zero,
+                    constraints: const BoxConstraints(),
+                    icon: const Icon(Icons.chat_bubble_outline, size: 28),
                     onPressed: () {},
-
-                    icon: const Icon(
-                      Icons.send_outlined,
-                      size: 28,
-                    ),
                   ),
-
+                  const SizedBox(width: 16),
+                  IconButton(
+                    padding: EdgeInsets.zero,
+                    constraints: const BoxConstraints(),
+                    icon: const Icon(Icons.send_outlined, size: 28),
+                    onPressed: () {},
+                  ),
                   const Spacer(),
-
-                  // SAVE
                   IconButton(
+                    padding: EdgeInsets.zero,
+                    constraints: const BoxConstraints(),
+                    icon: const Icon(Icons.bookmark_border, size: 28),
                     onPressed: () {},
-
-                    icon: const Icon(
-                      Icons.bookmark_border,
-                      size: 28,
-                    ),
                   ),
                 ],
               ),
             ),
 
-            // ======================================
-            // LIKE COUNT
-            // ======================================
-
+            // Likes Count
             Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16,
-              ),
-
+              padding: const EdgeInsets.only(top: 4.0, bottom: 8.0),
               child: Text(
-                '$likes likes',
+                '$likesCount likes',
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
 
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
+            // Caption
+            Padding(
+              padding: const EdgeInsets.only(bottom: 12.0),
+              child: RichText(
+                text: TextSpan(
+                  style: const TextStyle(color: Colors.black, fontSize: 14),
+                  children: [
+                    TextSpan(
+                      text: '${widget.username} ',
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    TextSpan(text: widget.caption),
+                  ],
                 ),
               ),
             ),
 
-            const SizedBox(height: 8),
-
-            // ======================================
-            // CAPTION
-            // ======================================
-
+            // Big Bottom "Like this post" Button
+            SizedBox(
+              width: double.infinity,
+              child: TextButton.icon(
+                onPressed: _incrementLikes,
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.purple.shade50,
+                  padding: const EdgeInsets.symmetric(vertical: 12.0),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                icon: Icon(
+                  isLiked ? Icons.favorite : Icons.favorite_border,
+                  color: Colors.purple.shade300,
+                  size: 18,
+                ),
+                label: Text(
+                  'Like this post',
+                  style: TextStyle(color: Colors.purple.shade400, fontWeight: FontWeight.bold),
+                ),
+              ),
+            ),
+            
             const Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 16,
-              ),
-
-              child: Text(
-                'flutter_student '
-                'Learning Flutter one widget at a time! 🚀',
-
-                style: TextStyle(
-                  fontSize: 15,
-                ),
-              ),
+              padding: EdgeInsets.symmetric(vertical: 20.0),
+              child: Divider(thickness: 1, color: Colors.black12),
             ),
-
-            const SizedBox(height: 20),
-
-            // ======================================
-            // LIKE BUTTON
-            // ======================================
-
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16,
-              ),
-
-              child: SizedBox(
-                width: double.infinity,
-
-                child: ElevatedButton.icon(
-
-                  onPressed: toggleLike,
-
-                  icon: Icon(
-                    isLiked
-                        ? Icons.favorite
-                        : Icons.favorite_border,
-                  ),
-
-                  label: Text(
-                    isLiked
-                        ? 'Liked'
-                        : 'Like this post',
-                  ),
-                ),
-              ),
-            ),
-
-            const SizedBox(height: 30),
           ],
         ),
       ),
