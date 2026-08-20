@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'contact_page.dart';
 
 void main() {
   runApp(
@@ -143,6 +144,22 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {},
             icon: const Icon(
               Icons.send_outlined,
+              color: Colors.black,
+            ),
+          ),
+
+          IconButton(
+            tooltip: 'Contact',
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ContactPage(),
+                ),
+              );
+            },
+            icon: const Icon(
+              Icons.phone_outlined,
               color: Colors.black,
             ),
           ),
