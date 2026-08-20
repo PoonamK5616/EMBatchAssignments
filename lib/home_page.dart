@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'contact_page.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -8,7 +10,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   // Like state
   int likes = 0;
   bool isLiked = false;
@@ -29,7 +30,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       // ==========================================
       // APP BAR
       // ==========================================
@@ -39,42 +39,35 @@ class _HomePageState extends State<HomePage> {
 
         title: const Text(
           'Instagram',
-          style: TextStyle(
-            fontSize: 26,
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
         ),
 
         actions: [
-
           IconButton(
-            onPressed: () {},
-
-            icon: const Icon(
-              Icons.favorite_border,
-            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ContactPage()),
+              );
+            },
+            icon: const Icon(Icons.headset_mic_outlined),
+            tooltip: 'Contact & Services',
           ),
 
-          IconButton(
-            onPressed: () {},
+          IconButton(onPressed: () {}, icon: const Icon(Icons.favorite_border)),
 
-            icon: const Icon(
-              Icons.send_outlined,
-            ),
-          ),
+          IconButton(onPressed: () {}, icon: const Icon(Icons.send_outlined)),
         ],
       ),
 
       // ==========================================
       // BODY
       // ==========================================
-
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
 
           children: [
-
             // ======================================
             // PROFILE SECTION
             // ======================================
@@ -84,7 +77,6 @@ class _HomePageState extends State<HomePage> {
 
               child: Row(
                 children: [
-
                   // Profile Icon
                   Container(
                     width: 50,
@@ -93,15 +85,10 @@ class _HomePageState extends State<HomePage> {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
 
-                      border: Border.all(
-                        width: 2,
-                      ),
+                      border: Border.all(width: 2),
                     ),
 
-                    child: const Icon(
-                      Icons.person,
-                      size: 30,
-                    ),
+                    child: const Icon(Icons.person, size: 30),
                   ),
 
                   const SizedBox(width: 12),
@@ -109,11 +96,9 @@ class _HomePageState extends State<HomePage> {
                   // Username
                   const Expanded(
                     child: Column(
-                      crossAxisAlignment:
-                          CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
 
                       children: [
-
                         Text(
                           'flutter_student',
 
@@ -128,22 +113,14 @@ class _HomePageState extends State<HomePage> {
                         Text(
                           'Learning Flutter',
 
-                          style: TextStyle(
-                            fontSize: 13,
-                          ),
+                          style: TextStyle(fontSize: 13),
                         ),
                       ],
                     ),
                   ),
 
                   // Follow Button
-                  ElevatedButton(
-                    onPressed: () {},
-
-                    child: const Text(
-                      'Follow',
-                    ),
-                  ),
+                  ElevatedButton(onPressed: () {}, child: const Text('Follow')),
                 ],
               ),
             ),
@@ -151,95 +128,34 @@ class _HomePageState extends State<HomePage> {
             // ======================================
             // POST
             // ======================================
-
-            Container(
+            SizedBox(
               width: double.infinity,
               height: 350,
 
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-
-                  colors: [
-                    Color(0xFFFFD54F),
-                    Color(0xFFFF7043),
-                    Color(0xFFE91E63),
-                    Color(0xFF673AB7),
-                  ],
-                ),
-              ),
-
-              child: const Center(
-                child: Column(
-                  mainAxisAlignment:
-                      MainAxisAlignment.center,
-
-                  children: [
-
-                    Icon(
-                      Icons.flutter_dash,
-
-                      size: 100,
-
-                      color: Colors.white,
-                    ),
-
-                    SizedBox(height: 15),
-
-                    Text(
-                      'Flutter',
-
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-
-                    SizedBox(height: 5),
-
-                    Text(
-                      'Build beautiful apps',
-
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                      ),
-                    ),
-                  ],
-                ),
+              child: Image.asset(
+                'assets/images/post.jpg',
+                width: double.infinity,
               ),
             ),
 
             // ======================================
             // POST ACTIONS
             // ======================================
-
             Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 12,
-                vertical: 8,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
 
               child: Row(
                 children: [
-
                   // LIKE
                   IconButton(
                     onPressed: toggleLike,
 
                     icon: Icon(
-
-                      isLiked
-                          ? Icons.favorite
-                          : Icons.favorite_border,
+                      isLiked ? Icons.favorite : Icons.favorite_border,
 
                       size: 30,
 
-                      color: isLiked
-                          ? Colors.red
-                          : Colors.black,
+                      color: isLiked ? Colors.red : Colors.black,
                     ),
                   ),
 
@@ -247,20 +163,14 @@ class _HomePageState extends State<HomePage> {
                   IconButton(
                     onPressed: () {},
 
-                    icon: const Icon(
-                      Icons.chat_bubble_outline,
-                      size: 28,
-                    ),
+                    icon: const Icon(Icons.chat_bubble_outline, size: 28),
                   ),
 
                   // SHARE
                   IconButton(
                     onPressed: () {},
 
-                    icon: const Icon(
-                      Icons.send_outlined,
-                      size: 28,
-                    ),
+                    icon: const Icon(Icons.send_outlined, size: 28),
                   ),
 
                   const Spacer(),
@@ -269,10 +179,7 @@ class _HomePageState extends State<HomePage> {
                   IconButton(
                     onPressed: () {},
 
-                    icon: const Icon(
-                      Icons.bookmark_border,
-                      size: 28,
-                    ),
+                    icon: const Icon(Icons.bookmark_border, size: 28),
                   ),
                 ],
               ),
@@ -281,11 +188,8 @@ class _HomePageState extends State<HomePage> {
             // ======================================
             // LIKE COUNT
             // ======================================
-
             Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
 
               child: Text(
                 '$likes likes',
@@ -302,19 +206,14 @@ class _HomePageState extends State<HomePage> {
             // ======================================
             // CAPTION
             // ======================================
-
             const Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 16,
-              ),
+              padding: EdgeInsets.symmetric(horizontal: 16),
 
               child: Text(
                 'flutter_student '
                 'Learning Flutter one widget at a time! 🚀',
 
-                style: TextStyle(
-                  fontSize: 15,
-                ),
+                style: TextStyle(fontSize: 15),
               ),
             ),
 
@@ -323,30 +222,18 @@ class _HomePageState extends State<HomePage> {
             // ======================================
             // LIKE BUTTON
             // ======================================
-
             Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
 
               child: SizedBox(
                 width: double.infinity,
 
                 child: ElevatedButton.icon(
-
                   onPressed: toggleLike,
 
-                  icon: Icon(
-                    isLiked
-                        ? Icons.favorite
-                        : Icons.favorite_border,
-                  ),
+                  icon: Icon(isLiked ? Icons.favorite : Icons.favorite_border),
 
-                  label: Text(
-                    isLiked
-                        ? 'Liked'
-                        : 'Like this post',
-                  ),
+                  label: Text(isLiked ? 'Liked' : 'Like this post'),
                 ),
               ),
             ),

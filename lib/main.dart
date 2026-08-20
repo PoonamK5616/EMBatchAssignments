@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'home_page.dart';
+
+import 'contact_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,14 +14,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
 
-      title: 'My First Flutter App',
+      title: 'Contact & Services App',
 
       theme: ThemeData(
         useMaterial3: true,
         scaffoldBackgroundColor: Colors.white,
       ),
 
-      home: const HomePage(),
+      home: const ContactPage(),
     );
   }
 }
