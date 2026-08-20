@@ -104,7 +104,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
 
-                  const S,
+                  const SizedBox(width: 12),
 
                   // Username
                   const Expanded(
