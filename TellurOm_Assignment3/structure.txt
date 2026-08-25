@@ -1,0 +1,14 @@
+Assignment 3: Pre-implementation Structure (Widget Tree)
+
+main() 
+  → runApp() 
+    → MaterialApp 
+      → Scaffold 
+        → AppBar (Title) + body (Center)
+          → Padding 
+            → Column 
+              → Text (Welcome Message)
+              → SizedBox (Spacing)
+              → Row (Icon + Text for Likes)
+              → SizedBox (Spacing)
+              → ElevatedButton (Like button)
