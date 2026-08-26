@@ -1,5 +1,31 @@
 import 'package:flutter/material.dart';
 
+// ==========================================
+// USER POST MODEL
+// ==========================================
+
+class UserPost {
+  final String username;
+  final String subtitle;
+  final String imageUrl;
+  final String caption;
+  int likes;
+  bool isLiked;
+
+  UserPost({
+    required this.username,
+    required this.subtitle,
+    required this.imageUrl,
+    required this.caption,
+    this.likes = 0,
+    this.isLiked = false,
+  });
+}
+
+// ==========================================
+// HOME PAGE
+// ==========================================
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -9,26 +35,43 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  // Like state
-  int likes = 0;
-  bool isLiked = false;
+  // 1 user, 3 posts
+  final List<UserPost> posts = [
+    UserPost(
+      username: 'flutter_student',
+      subtitle: 'Mumbai, India',
+      imageUrl: 'https://picsum.photos/id/10/600/600',
+      caption: 'Learning Flutter one widget at a time! 🚀',
+      likes: 12,
+    ),
+    UserPost(
+      username: 'flutter_student',
+      subtitle: 'Goa, India',
+      imageUrl: 'https://picsum.photos/id/20/600/600',
+      caption: 'Widgets are everything in Flutter 🎯',
+      likes: 34,
+    ),
+    UserPost(
+      username: 'flutter_student',
+      subtitle: 'Delhi, India',
+      imageUrl: 'https://picsum.photos/id/30/600/600',
+      caption: 'Hot reload is pure magic ✨',
+      likes: 58,
+    ),
+  ];
 
-  // Like button function
-  void toggleLike() {
+  // Every tap increases likes by 1 and turns heart red
+  void addLike(int index) {
     setState(() {
-      if (isLiked) {
-        likes--;
-        isLiked = false;
-      } else {
-        likes++;
-        isLiked = true;
-      }
+      posts[index].likes++;
+      posts[index].isLiked = true;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
 
       // ==========================================
       // APP BAR
@@ -36,31 +79,23 @@ class _HomePageState extends State<HomePage> {
 
       appBar: AppBar(
         backgroundColor: Colors.white,
-
+        elevation: 0.5,
         title: const Text(
           'Instagram',
           style: TextStyle(
             fontSize: 26,
             fontWeight: FontWeight.bold,
+            color: Colors.black,
           ),
         ),
-
         actions: [
-
           IconButton(
             onPressed: () {},
-
-            icon: const Icon(
-              Icons.favorite_border,
-            ),
+            icon: const Icon(Icons.favorite_border, color: Colors.black),
           ),
-
           IconButton(
             onPressed: () {},
-
-            icon: const Icon(
-              Icons.send_outlined,
-            ),
+            icon: const Icon(Icons.send_outlined, color: Colors.black),
           ),
         ],
       ),
@@ -69,291 +104,252 @@ class _HomePageState extends State<HomePage> {
       // BODY
       // ==========================================
 
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+      body: ListView.builder(
+        itemCount: posts.length,
+        itemBuilder: (context, index) {
+          return _buildPost(posts[index], index);
+        },
+      ),
+    );
+  }
 
-          children: [
+  // ==========================================
+  // POST CARD
+  // ==========================================
 
-            // ======================================
-            // PROFILE SECTION
-            // ======================================
+  Widget _buildPost(UserPost post, int index) {
+    return Container(
+      color: Colors.white,
+      margin: const EdgeInsets.only(bottom: 12),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
 
-            Padding(
-              padding: const EdgeInsets.all(16),
+          // ======================================
+          // PROFILE ROW
+          // ======================================
 
-              child: Row(
-                children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+            child: Row(
+              children: [
 
-                  // Profile Icon
-                  Container(
-                    width: 50,
-                    height: 50,
-
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-
-                      border: Border.all(
-                        width: 2,
-                      ),
-                    ),
-
-                    child: const Icon(
-                      Icons.person,
-                      size: 30,
-                    ),
-                  ),
-
-                  const SizedBox(width: 12),
-
-                  // Username
-                  const Expanded(
-                    child: Column(
-                      crossAxisAlignment:
-                          CrossAxisAlignment.start,
-
-                      children: [
-
-                        Text(
-                          'flutter_student',
-
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-
-                        SizedBox(height: 3),
-
-                        Text(
-                          'Learning Flutter',
-
-                          style: TextStyle(
-                            fontSize: 13,
-                          ),
-                        ),
+                // Avatar with gradient ring
+                Container(
+                  padding: const EdgeInsets.all(2),
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: LinearGradient(
+                      colors: [
+                        Color(0xFFf09433),
+                        Color(0xFFe6683c),
+                        Color(0xFFdc2743),
+                        Color(0xFFcc2366),
+                        Color(0xFFbc1888),
                       ],
                     ),
                   ),
-
-                  // Follow Button
-                  ElevatedButton(
-                    onPressed: () {},
-
-                    child: const Text(
-                      'Follow',
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
-            // ======================================
-            // POST
-            // ======================================
-
-            Container(
-              width: double.infinity,
-              height: 350,
-
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-
-                  colors: [
-                    Color(0xFFFFD54F),
-                    Color(0xFFFF7043),
-                    Color(0xFFE91E63),
-                    Color(0xFF673AB7),
-                  ],
-                ),
-              ),
-
-              child: const Center(
-                child: Column(
-                  mainAxisAlignment:
-                      MainAxisAlignment.center,
-
-                  children: [
-
-                    Icon(
-                      Icons.flutter_dash,
-
-                      size: 100,
-
+                  child: Container(
+                    padding: const EdgeInsets.all(2),
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
                       color: Colors.white,
                     ),
-
-                    SizedBox(height: 15),
-
-                    Text(
-                      'Flutter',
-
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    child: const CircleAvatar(
+                      radius: 18,
+                      backgroundColor: Color(0xFFEEEEEE),
+                      child: Icon(Icons.person, size: 20, color: Colors.grey),
                     ),
+                  ),
+                ),
 
-                    SizedBox(height: 5),
+                const SizedBox(width: 10),
 
-                    Text(
-                      'Build beautiful apps',
-
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
+                // Username & location
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        post.username,
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
+                      Text(
+                        post.subtitle,
+                        style: const TextStyle(
+                          fontSize: 12,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                // More options
+                const Icon(Icons.more_vert, color: Colors.black),
+              ],
+            ),
+          ),
+
+          // ======================================
+          // POST IMAGE
+          // ======================================
+
+          GestureDetector(
+            onDoubleTap: () => addLike(index),
+            child: SizedBox(
+              width: double.infinity,
+              height: 380,
+              child: Image.network(
+                post.imageUrl,
+                fit: BoxFit.cover,
+                loadingBuilder: (context, child, loadingProgress) {
+                  if (loadingProgress == null) return child;
+                  return Container(
+                    height: 380,
+                    color: Colors.grey.shade100,
+                    child: const Center(child: CircularProgressIndicator()),
+                  );
+                },
+                errorBuilder: (context, error, stackTrace) {
+                  return Container(
+                    height: 380,
+                    color: Colors.grey.shade100,
+                    child: const Center(
+                      child: Icon(Icons.broken_image, size: 60, color: Colors.grey),
                     ),
-                  ],
+                  );
+                },
+              ),
+            ),
+          ),
+
+          // ======================================
+          // ACTION BUTTONS
+          // ======================================
+
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+            child: Row(
+              children: [
+
+                // LIKE — tap to increase
+                IconButton(
+                  onPressed: () => addLike(index),
+                  icon: Icon(
+                    post.isLiked ? Icons.favorite : Icons.favorite_border,
+                    size: 28,
+                    color: post.isLiked ? Colors.red : Colors.black,
+                  ),
+                ),
+
+                // COMMENT
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.chat_bubble_outline,
+                    size: 26,
+                    color: Colors.black,
+                  ),
+                ),
+
+                // SHARE
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.send_outlined,
+                    size: 26,
+                    color: Colors.black,
+                  ),
+                ),
+
+                const Spacer(),
+
+                // SAVE
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.bookmark_border,
+                    size: 26,
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          // ======================================
+          // LIKE COUNT — increases on every tap
+          // ======================================
+
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 250),
+              transitionBuilder: (child, animation) => SlideTransition(
+                position: Tween<Offset>(
+                  begin: const Offset(0, -0.4),
+                  end: Offset.zero,
+                ).animate(animation),
+                child: FadeTransition(opacity: animation, child: child),
+              ),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  '${post.likes} likes',
+                  key: ValueKey(post.likes),
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
+          ),
 
-            // ======================================
-            // POST ACTIONS
-            // ======================================
+          const SizedBox(height: 6),
 
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 12,
-                vertical: 8,
-              ),
+          // ======================================
+          // CAPTION
+          // ======================================
 
-              child: Row(
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: RichText(
+              text: TextSpan(
+                style: const TextStyle(fontSize: 14, color: Colors.black),
                 children: [
-
-                  // LIKE
-                  IconButton(
-                    onPressed: toggleLike,
-
-                    icon: Icon(
-
-                      isLiked
-                          ? Icons.favorite
-                          : Icons.favorite_border,
-
-                      size: 30,
-
-                      color: isLiked
-                          ? Colors.red
-                          : Colors.black,
-                    ),
+                  TextSpan(
+                    text: '${post.username}  ',
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
-
-                  // COMMENT
-                  IconButton(
-                    onPressed: () {},
-
-                    icon: const Icon(
-                      Icons.chat_bubble_outline,
-                      size: 28,
-                    ),
-                  ),
-
-                  // SHARE
-                  IconButton(
-                    onPressed: () {},
-
-                    icon: const Icon(
-                      Icons.send_outlined,
-                      size: 28,
-                    ),
-                  ),
-
-                  const Spacer(),
-
-                  // SAVE
-                  IconButton(
-                    onPressed: () {},
-
-                    icon: const Icon(
-                      Icons.bookmark_border,
-                      size: 28,
-                    ),
-                  ),
+                  TextSpan(text: post.caption),
                 ],
               ),
             ),
+          ),
 
-            // ======================================
-            // LIKE COUNT
-            // ======================================
+          const SizedBox(height: 10),
 
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16,
-              ),
+          // ======================================
+          // TIMESTAMP
+          // ======================================
 
-              child: Text(
-                '$likes likes',
-
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16),
+            child: Text(
+              '2 hours ago',
+              style: TextStyle(fontSize: 11, color: Colors.grey),
             ),
+          ),
 
-            const SizedBox(height: 8),
+          const SizedBox(height: 12),
 
-            // ======================================
-            // CAPTION
-            // ======================================
-
-            const Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 16,
-              ),
-
-              child: Text(
-                'flutter_student '
-                'Learning Flutter one widget at a time! 🚀',
-
-                style: TextStyle(
-                  fontSize: 15,
-                ),
-              ),
-            ),
-
-            const SizedBox(height: 20),
-
-            // ======================================
-            // LIKE BUTTON
-            // ======================================
-
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16,
-              ),
-
-              child: SizedBox(
-                width: double.infinity,
-
-                child: ElevatedButton.icon(
-
-                  onPressed: toggleLike,
-
-                  icon: Icon(
-                    isLiked
-                        ? Icons.favorite
-                        : Icons.favorite_border,
-                  ),
-
-                  label: Text(
-                    isLiked
-                        ? 'Liked'
-                        : 'Like this post',
-                  ),
-                ),
-              ),
-            ),
-
-            const SizedBox(height: 30),
-          ],
-        ),
+          const Divider(height: 1, thickness: 0.3),
+        ],
       ),
     );
   }
