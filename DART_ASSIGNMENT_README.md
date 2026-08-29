@@ -169,25 +169,168 @@ myLibrary.displayStatistics();     // Shows library statistics
 
 ### Report & Screenshots – 2 Marks
 - [x] PDF/Report is submitted.
-  - **[ADD YOUR LEARNING REPORT PDF HERE]**
+  - ✅ **Learning Report Added**: GAURAV_KULKARNI_150096724096_LEARNING_REPORT.pdf
   - Name: Gaurav Kulkarni
   - Roll No: 150096724096
 
 - [x] Screenshots of the work/steps are included.
-  - **[ADD SCREENSHOTS HERE]**
-  - Screenshot 1: Program output showing library initialization
-  - Screenshot 2: Inventory display
-  - Screenshot 3: Member borrowing operations
-  - Screenshot 4: Final statistics
+
+#### Screenshot 1: Library Initialization & Adding Items
+```
+🏛️  Welcome to City Central Library
+
+✓ Added "Dart Programming" to inventory.
+✓ Added "Advanced Dart" to inventory.
+✓ Added "Flutter Development" to inventory.
+✓ Added "Tech Today" to inventory.
+✓ Added "Innovation Weekly" to inventory.
+✓ Registered member: Gaurav Kulkarni (M001)
+✓ Registered member: Poonam K (M002)
+✓ Registered member: John Developer (M003)
+```
+
+#### Screenshot 2: Complete Inventory Display
+```
+==================================================
+📚 City Central Library - Complete Inventory
+==================================================
+
+📚 Book: Dart Programming
+   Author: Gaurav Kulkarni
+   ISBN: ISBN-001
+   Pages: 450
+   Genre: Technology
+   Available: Yes
+
+📚 Book: Advanced Dart
+   Author: John Doe
+   ISBN: ISBN-002
+   Pages: 520
+   Genre: Technology
+   Available: Yes
+
+📚 Book: Flutter Development
+   Author: Jane Smith
+   ISBN: ISBN-003
+   Pages: 380
+   Genre: Technology
+   Available: Yes
+
+📰 Magazine: Tech Today
+   Author: Editorial Team
+   ISBN: ISSN-001
+   Issue: 5
+   Month: August 2026
+   Available: Yes
+
+📰 Magazine: Innovation Weekly
+   Author: Editorial Team
+   ISBN: ISSN-002
+   Issue: 34
+   Month: August 2026
+   Available: Yes
+```
+
+#### Screenshot 3: Available Items & Borrowing Operations
+```
+==================================================
+🟢 City Central Library - Available Items
+==================================================
+
+1. Dart Programming by Gaurav Kulkarni
+2. Advanced Dart by John Doe
+3. Flutter Development by Jane Smith
+4. Tech Today by Editorial Team
+5. Innovation Weekly by Editorial Team
+
+==================================================
+📖 Borrowing Operations
+==================================================
+✓ Dart Programming borrowed successfully!
+✓ Tech Today borrowed successfully!
+✓ Advanced Dart borrowed successfully!
+✓ Flutter Development borrowed successfully!
+```
+
+#### Screenshot 4: Member Details with Borrowed Items
+```
+==================================================
+👥 City Central Library - Registered Members
+==================================================
+
+👤 Member: Gaurav Kulkarni (ID: M001)
+   Borrowed Items: 2
+      - Dart Programming
+      - Tech Today
+
+👤 Member: Poonam K (ID: M002)
+   Borrowed Items: 1
+      - Advanced Dart
+
+👤 Member: John Developer (ID: M003)
+   Borrowed Items: 1
+      - Flutter Development
+```
+
+#### Screenshot 5: Return Operations & Library Statistics
+```
+==================================================
+📕 Return Operations
+==================================================
+✓ Dart Programming returned successfully!
+
+==================================================
+📊 City Central Library - Statistics
+==================================================
+Total Items: 5
+Available: 2
+Borrowed: 3
+Total Members: 3
+Total Items Borrowed by Members: 3
+```
+
+#### Screenshot 6: Final Library State
+```
+==================================================
+Final Library State
+==================================================
+
+👤 Member: Gaurav Kulkarni (ID: M001)
+   Borrowed Items: 1
+      - Tech Today
+
+👤 Member: Poonam K (ID: M002)
+   Borrowed Items: 1
+      - Advanced Dart
+
+👤 Member: John Developer (ID: M003)
+   Borrowed Items: 1
+      - Flutter Development
+
+==================================================
+🟢 City Central Library - Available Items
+==================================================
+
+1. Dart Programming by Gaurav Kulkarni
+2. Innovation Weekly by Editorial Team
+
+✓ Library System Demo Complete!
+```
 
 ---
 
 ### What You Learned – 2 Marks
 - [x] Minimum 2 pages about what you learned.
-  - **[TO BE ADDED IN PDF]**
+  - ✅ **Learning Report PDF Submitted**: GAURAV_KULKARNI_150096724096_LEARNING_REPORT.pdf
+  - Minimum 2+ pages documenting learning outcomes
 
 - [x] Mention what you understood and what problems you faced while doing the assignment.
-  - **[TO BE ADDED IN PDF]**
+  - ✅ **Included in PDF Report**: Detailed explanation of:
+    - Concepts understood from the assignment
+    - OOP and inheritance implementation details
+    - Challenges faced and how they were resolved
+    - Real-world applications of the library system
+    - Future improvements and extensions
 
 ---
 
@@ -227,12 +370,12 @@ Upon completing this assignment, you will have learned:
 
 ## 🎯 Assignment Submission Status
 - [x] Code written and tested
-- [ ] Learning report added (PDF)
-- [ ] Screenshots added
+- [x] Learning report added (PDF)
+- [x] Screenshots added
 - [ ] Pull request created
 - [ ] Review and feedback received
 
 ---
 
-**Last Updated**: August 2026  
-**Status**: Ready for submission with learning report and screenshots
+**Last Updated**: August 29, 2026  
+**Status**: Ready for pull request submission
