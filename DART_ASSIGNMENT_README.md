@@ -175,147 +175,31 @@ myLibrary.displayStatistics();     // Shows library statistics
 
 - [x] Screenshots of the work/steps are included.
 
-#### Screenshot 1: Library Initialization & Adding Items
-```
-🏛️  Welcome to City Central Library
+#### Screenshot 1: Program Initialization
+Library system initialization showing the creation of inventory items and member registration.
 
-✓ Added "Dart Programming" to inventory.
-✓ Added "Advanced Dart" to inventory.
-✓ Added "Flutter Development" to inventory.
-✓ Added "Tech Today" to inventory.
-✓ Added "Innovation Weekly" to inventory.
-✓ Registered member: Gaurav Kulkarni (M001)
-✓ Registered member: Poonam K (M002)
-✓ Registered member: John Developer (M003)
-```
+![Screenshot 1 - Initialization](Screenshot_01_Initialization.png)
+
+---
 
 #### Screenshot 2: Complete Inventory Display
-```
-==================================================
-📚 City Central Library - Complete Inventory
-==================================================
+All library items (books and magazines) displayed with complete details including ISBN, pages, genre, and availability status.
 
-📚 Book: Dart Programming
-   Author: Gaurav Kulkarni
-   ISBN: ISBN-001
-   Pages: 450
-   Genre: Technology
-   Available: Yes
+![Screenshot 2 - Inventory Display](Screenshot_02_Inventory.png)
 
-📚 Book: Advanced Dart
-   Author: John Doe
-   ISBN: ISBN-002
-   Pages: 520
-   Genre: Technology
-   Available: Yes
+---
 
-📚 Book: Flutter Development
-   Author: Jane Smith
-   ISBN: ISBN-003
-   Pages: 380
-   Genre: Technology
-   Available: Yes
+#### Screenshot 3: Borrowing Operations
+Member borrowing operations demonstrating how books and magazines are borrowed from the library, with member tracking.
 
-📰 Magazine: Tech Today
-   Author: Editorial Team
-   ISBN: ISSN-001
-   Issue: 5
-   Month: August 2026
-   Available: Yes
+![Screenshot 3 - Borrowing Operations](Screenshot_03_Borrowing.png)
 
-📰 Magazine: Innovation Weekly
-   Author: Editorial Team
-   ISBN: ISSN-002
-   Issue: 34
-   Month: August 2026
-   Available: Yes
-```
+---
 
-#### Screenshot 3: Available Items & Borrowing Operations
-```
-==================================================
-🟢 City Central Library - Available Items
-==================================================
+#### Screenshot 4: Statistics and Final State
+Library statistics showing total items, available vs borrowed counts, and final library state after all operations.
 
-1. Dart Programming by Gaurav Kulkarni
-2. Advanced Dart by John Doe
-3. Flutter Development by Jane Smith
-4. Tech Today by Editorial Team
-5. Innovation Weekly by Editorial Team
-
-==================================================
-📖 Borrowing Operations
-==================================================
-✓ Dart Programming borrowed successfully!
-✓ Tech Today borrowed successfully!
-✓ Advanced Dart borrowed successfully!
-✓ Flutter Development borrowed successfully!
-```
-
-#### Screenshot 4: Member Details with Borrowed Items
-```
-==================================================
-👥 City Central Library - Registered Members
-==================================================
-
-👤 Member: Gaurav Kulkarni (ID: M001)
-   Borrowed Items: 2
-      - Dart Programming
-      - Tech Today
-
-👤 Member: Poonam K (ID: M002)
-   Borrowed Items: 1
-      - Advanced Dart
-
-👤 Member: John Developer (ID: M003)
-   Borrowed Items: 1
-      - Flutter Development
-```
-
-#### Screenshot 5: Return Operations & Library Statistics
-```
-==================================================
-📕 Return Operations
-==================================================
-✓ Dart Programming returned successfully!
-
-==================================================
-📊 City Central Library - Statistics
-==================================================
-Total Items: 5
-Available: 2
-Borrowed: 3
-Total Members: 3
-Total Items Borrowed by Members: 3
-```
-
-#### Screenshot 6: Final Library State
-```
-==================================================
-Final Library State
-==================================================
-
-👤 Member: Gaurav Kulkarni (ID: M001)
-   Borrowed Items: 1
-      - Tech Today
-
-👤 Member: Poonam K (ID: M002)
-   Borrowed Items: 1
-      - Advanced Dart
-
-👤 Member: John Developer (ID: M003)
-   Borrowed Items: 1
-      - Flutter Development
-
-==================================================
-🟢 City Central Library - Available Items
-==================================================
-
-1. Dart Programming by Gaurav Kulkarni
-2. Innovation Weekly by Editorial Team
-
-✓ Library System Demo Complete!
-```
+![Screenshot 4 - Statistics](Screenshot_04_Statistics.png)
 
 ---
 
