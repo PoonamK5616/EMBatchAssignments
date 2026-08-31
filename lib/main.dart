@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'home_page.dart';
+import 'foodapp.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,15 +12,29 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-
-      title: 'My First Flutter App',
-
+      title: kAppName,
       theme: ThemeData(
         useMaterial3: true,
-        scaffoldBackgroundColor: Colors.white,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: kZomatoRed,
+          primary: kZomatoRed,
+        ),
+        scaffoldBackgroundColor: kPageBg,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.white,
+          foregroundColor: Colors.black87,
+          elevation: 0,
+        ),
+        chipTheme: ChipThemeData(
+          backgroundColor: kBrandSoft,
+          selectedColor: kBrandSoft,
+          side: const BorderSide(color: kLine),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+        ),
       ),
-
-      home: const HomePage(),
+      home: const DashboardScreen(),
     );
   }
 }
