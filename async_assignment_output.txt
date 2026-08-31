@@ -1,0 +1,157 @@
+
+============================================================
+🚀 Dart Async/Await with Null Safety - Mock API Demo
+============================================================
+
+────────────────────────────────────────────────────────────
+Demo 1: Fetch Single User (including null case)
+────────────────────────────────────────────────────────────
+📡 Fetching user with ID: 1...
+✓ Successfully fetched user
+
+👤 User Information:
+   ID: 1
+   Name: Gaurav Kulkarni
+   Email: gaurav@example.com
+   Phone: 9876543210
+   Company: TechCorp
+   Created: 2026-1-15
+📡 Fetching user with ID: 4...
+❌ User with ID 4 not found
+❌ Could not retrieve user information
+
+────────────────────────────────────────────────────────────
+Demo 2: Fetch All Users
+────────────────────────────────────────────────────────────
+📡 Fetching all users...
+✓ Successfully fetched 3 users
+
+👤 User Information:
+   ID: 1
+   Name: Gaurav Kulkarni
+   Email: gaurav@example.com
+   Phone: 9876543210
+   Company: TechCorp
+   Created: 2026-1-15
+
+👤 User Information:
+   ID: 2
+   Name: Poonam K
+   Email: poonam@example.com
+   Phone: Not provided
+   Company: InnovateLabs
+   Created: 2026-2-10
+
+👤 User Information:
+   ID: 3
+   Name: John Developer
+   Email: Not provided
+   Phone: 9876543211
+   Company: Not provided
+   Created: 2026-3-5
+
+────────────────────────────────────────────────────────────
+Demo 3: Fetch Posts by User ID
+────────────────────────────────────────────────────────────
+📡 Fetching posts for user ID: 1...
+✓ Successfully fetched 2 posts for user 1
+
+📚 Posts for User 1:
+
+📝 Post Information:
+   ID: 1
+   User ID: 1
+   Title: Learning Dart Async Programming
+   Content: Exploring Future, async/await, and null safety in Dart.
+   Likes: 42
+   Tags: dart, async, programming
+   Published: 2026-8-20
+
+📝 Post Information:
+   ID: 2
+   User ID: 1
+   Title: Null Safety Best Practices
+   Content: Tips and tricks for using null safety effectively in Dart.
+   Likes: 0
+   Tags: dart, null-safety
+   Published: 2026-8-22
+
+────────────────────────────────────────────────────────────
+Demo 4: Fetch User with Posts (Chained Futures)
+────────────────────────────────────────────────────────────
+
+📡 Fetching user and their posts...
+📡 Fetching user with ID: 2...
+✓ Successfully fetched user
+📡 Fetching posts for user ID: 2...
+✓ Successfully fetched 1 posts for user 2
+
+👤 User Information:
+   ID: 2
+   Name: Poonam K
+   Email: poonam@example.com
+   Phone: Not provided
+   Company: InnovateLabs
+   Created: 2026-2-10
+
+📚 Posts for this user:
+
+📝 Post Information:
+   ID: 3
+   User ID: 2
+   Title: API Integration in Flutter
+   Content: How to integrate REST APIs with Flutter applications.
+   Likes: 28
+   Tags: 
+   Published: 2026-8-25
+
+────────────────────────────────────────────────────────────
+Demo 5: Parallel Requests (Future.wait)
+────────────────────────────────────────────────────────────
+
+📡 Fetching all data in parallel...
+📡 Fetching all users...
+📡 Fetching post with ID: 1...
+✓ Successfully fetched 3 users
+✓ Successfully fetched post
+📡 Fetching post with ID: 2...
+✓ Successfully fetched post
+📡 Fetching post with ID: 3...
+✓ Successfully fetched post
+📡 Fetching post with ID: 4...
+✓ Successfully fetched post
+
+📊 Summary:
+Total Users: 3
+Total Posts: 4
+
+────────────────────────────────────────────────────────────
+Demo 6: Timeout Handling
+────────────────────────────────────────────────────────────
+📡 Fetching user with ID: 1...
+⏱️  Request timed out
+
+────────────────────────────────────────────────────────────
+Demo 7: Try-Catch Error Handling
+────────────────────────────────────────────────────────────
+📡 Fetching post with ID: 1...
+✓ Successfully fetched user
+✓ Successfully fetched post
+
+📝 Post Information:
+   ID: 1
+   User ID: 1
+   Title: Learning Dart Async Programming
+   Content: Exploring Future, async/await, and null safety in Dart.
+   Likes: 42
+   Tags: dart, async, programming
+   Published: 2026-8-20
+
+📈 Engagement:
+   Likes: 42
+   Tags: dart, async, programming
+
+============================================================
+✓ All demonstrations completed successfully!
+============================================================
+
