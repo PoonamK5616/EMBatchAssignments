@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'home_page.dart';
+import 'package:my_app/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,15 +11,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Instagram',
       debugShowCheckedModeBanner: false,
-
-      title: 'My First Flutter App',
-
       theme: ThemeData(
-        useMaterial3: true,
-        scaffoldBackgroundColor: Colors.white,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-
       home: const HomePage(),
     );
   }
