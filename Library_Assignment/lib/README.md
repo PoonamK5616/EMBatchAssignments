@@ -32,15 +32,19 @@ A simple **Dart console program** that models a library system using variables, 
 ## Main Classes
 
 ### `LibraryBook`
+
 Stores the book ID, title, author, and borrowed/available status.
 
 ### `LibraryMember`
+
 Stores the member ID and name.
 
 ### `PremiumLibraryMember`
+
 Extends `LibraryMember` and demonstrates inheritance.
 
 ### `Library`
+
 Manages books, members, borrowing, returning, and searching.
 
 ## Running the Program
@@ -64,13 +68,7 @@ dart run lib/task10_library.dart
 
 ## Screenshots
 
-Add 2–3 screenshots of the code and console output here.
-
-Suggested screenshots:
-
-1. OOP classes and inheritance
-2. Library operations
-3. Console output
+- In PDF
 
 ## What I Learned
 
