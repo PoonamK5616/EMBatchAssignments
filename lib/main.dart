@@ -1,26 +1,23 @@
 import 'package:flutter/material.dart';
-import 'home_page.dart';
+import 'dashboard_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const DashboardApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class DashboardApp extends StatelessWidget {
+  const DashboardApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-
-      title: 'My First Flutter App',
-
+      title: 'Responsive Dashboard UI',
       theme: ThemeData(
+        colorSchemeSeed: Colors.indigo,
         useMaterial3: true,
-        scaffoldBackgroundColor: Colors.white,
       ),
-
-      home: const HomePage(),
+      home: const DashboardScreen(),
     );
   }
 }
