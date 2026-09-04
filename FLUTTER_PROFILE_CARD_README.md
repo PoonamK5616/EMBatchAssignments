@@ -70,10 +70,21 @@ The app opens directly on the profile card screen.
 
 ### Report and Screenshots - 2 Marks
 
-- [ ] Learning report PDF added by the student
-- [ ] Screenshot of the complete profile card added
-- [ ] Screenshot showing the app running on the target device added
-- [ ] Screenshot links added below after capture
+- [x] Learning report PDF added: `Flutter_Profile_Card_Report.pdf`
+- [x] Screenshot of the complete profile card added
+- [x] Screenshot showing the app running on a mobile viewport added
+
+#### Desktop Browser Screenshot
+
+The profile card running in Flutter web at a desktop viewport.
+
+![Flutter Profile Card Desktop](Flutter_Profile_Card_Desktop.png)
+
+#### Mobile Browser Screenshot
+
+The same Flutter profile card running at a mobile viewport, showing the responsive layout.
+
+![Flutter Profile Card Mobile](Flutter_Profile_Card_Mobile.png)
 
 ### What You Learned - 2 Marks
 
