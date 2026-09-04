@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'home_page.dart';
+
+import 'profile_card.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,10 +18,14 @@ class MyApp extends StatelessWidget {
 
       theme: ThemeData(
         useMaterial3: true,
-        scaffoldBackgroundColor: Colors.white,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: ProfileCardPage.blue,
+          brightness: Brightness.light,
+        ),
+        fontFamily: 'Roboto',
       ),
 
-      home: const HomePage(),
+      home: const ProfileCardPage(),
     );
   }
 }
